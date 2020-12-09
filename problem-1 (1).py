@@ -3,7 +3,7 @@
 
 # In[12]:
 
-
+#import the packages
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 
 # In[13]:
 
-
+#load the dataset
 dataset=pd.read_csv('C:/Users/ATCHAYA/Social_Network_Ads.csv')
 print(dataset)
 
@@ -25,14 +25,14 @@ y=dataset.iloc[:,4].values
 
 # In[15]:
 
-
+#split the dataset 
 from sklearn.model_selection import train_test_split
 x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.2,random_state=0)
 
 
 # In[16]:
 
-
+#preprocessing the dataset
 from sklearn.preprocessing import StandardScaler
 sc=StandardScaler()
 x_train=sc.fit_transform(x_train)
@@ -41,7 +41,7 @@ x_test=sc.transform(x_test)
 
 # In[17]:
 
-
+#finding the accuracy score
 from sklearn.linear_model import LogisticRegression 
 from sklearn.metrics import accuracy_score
 classifier=LogisticRegression(random_state=0)
@@ -58,7 +58,7 @@ accuracy_score(y_test,y_predict)
 
 # In[18]:
 
-
+#plot the training set 
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_predict)
 from matplotlib.colors import ListedColormap
@@ -81,7 +81,7 @@ plt.show()
 
 # In[19]:
 
-
+#Plot the test set
 from matplotlib.colors import ListedColormap
 X_set, y_set = x_test, y_test
 X1, X2 = np.meshgrid(np.arange(start = X_set[:, 0].min() - 1, stop = X_set[:, 0].max() + 1, step = 0.01),
